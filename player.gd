@@ -32,8 +32,8 @@ func getShoot()->bool:
 
 func _process(delta: float) -> void:
 	if(coolDown<=0):
-			shoot()
-			coolDown = maxCoolDown
+		shoot()
+		coolDown = maxCoolDown
 	else:
 		coolDown -= 1
 

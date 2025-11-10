@@ -10,7 +10,6 @@ size = Vector2(99, 74)
 [node name="player" type="CharacterBody2D"]
 collision_mask = 4
 script = ExtResource("1_onrkg")
-maxCoolDown = 20
 bullet_scene = ExtResource("2_hqtel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

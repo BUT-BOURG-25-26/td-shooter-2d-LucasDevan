@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bry5124oxo6xl" path="res://ennemie_type_2.gd" id="1_r3tur"]
 [ext_resource type="Texture2D" uid="uid://c51yrf65esmlf" path="res://KennyAssets/SpaceShooterRedux/Enemies/enemyRed2.png" id="2_jukwr"]
-[ext_resource type="PackedScene" uid="uid://ojrhuxtm3f2n" path="res://bulletEnnemie.tscn" id="2_q677p"]
+[ext_resource type="PackedScene" uid="uid://bm8ojrgbmlie8" path="res://bulletEnnemie2.tscn" id="2_q677p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yb4ka"]
 size = Vector2(97, 93)

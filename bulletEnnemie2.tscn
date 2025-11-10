@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm8ojrgbmlie8"]
+
+[ext_resource type="Script" uid="uid://u0ddxq3y7tjf" path="res://bullet_ennemie_2.gd" id="1_pkrim"]
+[ext_resource type="Texture2D" uid="uid://dm6h5o1g44aqp" path="res://KennyAssets/SpaceShooterRedux/Lasers/laserRed04.png" id="2_pkrim"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4vbm"]
+radius = 7.0
+height = 46.0
+
+[node name="Bullet" type="Area2D"]
+disable_mode = 1
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_pkrim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5.96046e-07, 0.384617)
+scale = Vector2(1.07692, 1.20998)
+texture = ExtResource("2_pkrim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 7
+shape = SubResource("CapsuleShape2D_t4vbm")
+one_way_collision_margin = 0.0
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

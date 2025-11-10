@@ -14,16 +14,14 @@ func _ready() -> void:
 	mainScene = $".."
 
 func _physics_process(delta: float) -> void:
-	
 	velocity.y = speed/3
 	if(is_on_screen()):
 		velocity.x = sideMovementSpeed * sin(counter)
 		counter+=sideMovementRange/100
 	move_and_slide()
-	
 
 func shoot()-> void:
-	var bullet : BulletEnnemie = bullet_scene.instantiate()
+	var bullet : Bullet = bullet_scene.instantiate()
 	mainScene.add_child(bullet)
 	bullet.isFromPlayer=false
 	bullet.global_position = Vector2(global_position.x,global_position.y+40)

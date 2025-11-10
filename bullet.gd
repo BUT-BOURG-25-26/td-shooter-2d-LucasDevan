@@ -21,7 +21,6 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 	queue_free() # Replace with function body.
 
 func _on_body_entered(body: Node2D) -> void:
-	print(body.name)
 	if(body is Ennemie and isFromPlayer):
 		body.takeDamage()
 		queue_free()

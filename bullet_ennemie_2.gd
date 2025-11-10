@@ -1,4 +1,4 @@
-class_name BulletEnnemie
+class_name BulletEnnemie2
 extends Bullet
 
 func _ready() -> void:
