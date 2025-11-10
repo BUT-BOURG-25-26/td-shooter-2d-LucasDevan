@@ -5,9 +5,7 @@ var maxDiviation : float = 40
 var counter : float = 0
 @export var sideMovementRange : float = 7
 @export var sideMovementSpeed : float = 200
-
-var coolDown = 0;
-@export var maxCoolDown = 30;
+@export var health : int = 1
 @export var bullet_scene: PackedScene
 var mainScene : Node2D
 
@@ -21,16 +19,11 @@ func _physics_process(delta: float) -> void:
 	if(is_on_screen()):
 		velocity.x = sideMovementSpeed * sin(counter)
 		counter+=sideMovementRange/100
-		if(coolDown<=0):
-			shoot()
-			coolDown=maxCoolDown
-		else:
-			coolDown-=1
 	move_and_slide()
 	
 
 func shoot()-> void:
-	var bullet : Bullet = bullet_scene.instantiate()
+	var bullet : BulletEnnemie = bullet_scene.instantiate()
 	mainScene.add_child(bullet)
 	bullet.isFromPlayer=false
 	bullet.global_position = Vector2(global_position.x,global_position.y+40)
@@ -49,3 +42,11 @@ func is_on_screen()->bool:
 	if(global_position.y>minY and global_position.y<maxY and global_position.x>minX and global_position.x<maxX):
 		return true
 	return false
+	
+func takeDamage()->void:
+	health = health - 1
+	if(health<=0):
+		queue_free()
+
+func _on_timer_timeout() -> void:
+	shoot()

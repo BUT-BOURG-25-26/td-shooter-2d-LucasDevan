@@ -1,49 +1,30 @@
 class_name Bullet
 extends Area2D
 
-var isFromPlayer : bool = false
-@export var speed : float = 300
+var isFromPlayer : bool = true
+@export var speed : float = 500
 var player : Player
+var mainScene : Node2D
 
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
+	mainScene = $".."
 	
 func _physics_process(delta: float) -> void:
 	if(isFromPlayer):
 		global_position.y=global_position.y-delta*speed
 	else:
 		global_position.y=global_position.y+delta*speed
-		if(not isFromPlayer):
-			if(touchesPlayer()):
-				player.takeDamage()
-				print("touch player!")
-				free()
-		else:
-			touchesEnnemies()
-	
-func touchesPlayer(action_range : float = 80)->bool:
-	if(player!=null):
-		var vectorial_space_between = player.global_position - global_position
-		var norme = vectorial_space_between.x**2 +vectorial_space_between.y**2
-		if(norme>action_range):
-			return false
-		return true
-	return false
 
-func touchesEnnemies(action_range:float =80):
-	var ennemiesGroupe = get_tree().get_nodes_in_group("Ennemy")
-	for i in range(len(ennemiesGroupe)):
-		var vectorial_space_between = ennemiesGroupe[i].global_position - global_position
-		var norme = vectorial_space_between.x**2 +vectorial_space_between.y**2
-		if(norme>action_range):
-			ennemiesGroupe[i].free()
-			queue_free()
-			return
+func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	area.free()
+	queue_free() # Replace with function body.
 
-
-func _on_body_enter(body:Node2D)->void:
-	if(body is Ennemie):
-		queue_free()
-	if(body is Player):
+func _on_body_entered(body: Node2D) -> void:
+	print(body.name)
+	if(body is Ennemie and isFromPlayer):
 		body.takeDamage()
-	print("touche new")
+		queue_free()
+	elif(body is Player and not isFromPlayer):
+		body.takeDamage()
+		queue_free()

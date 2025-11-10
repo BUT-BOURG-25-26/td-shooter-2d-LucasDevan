@@ -1,8 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://bn5lbiaggg430"]
+[gd_scene load_steps=5 format=3 uid="uid://bn5lbiaggg430"]
 
 [ext_resource type="Script" uid="uid://bxwwk7ynu6wvg" path="res://ennemiespawner.gd" id="1_duvlv"]
 [ext_resource type="PackedScene" uid="uid://bv3luedqrcnuq" path="res://ennemie.tscn" id="2_3mlgp"]
+[ext_resource type="PackedScene" uid="uid://b23yxkvqjkkxh" path="res://ennemieType2.tscn" id="3_3mlgp"]
+[ext_resource type="PackedScene" uid="uid://bs2732a450bid" path="res://ennemieType3.tscn" id="4_63i00"]
 
-[node name="Ennemiespawner" type="Node2D"]
+[node name="EnnemieSpawner" type="Node2D"]
 script = ExtResource("1_duvlv")
 ennemyScene = ExtResource("2_3mlgp")
+ennemy2Scene = ExtResource("3_3mlgp")
+ennemy3Scene = ExtResource("4_63i00")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

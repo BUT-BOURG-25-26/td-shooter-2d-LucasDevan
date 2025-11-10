@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://ca513f5s5u4ji" path="res://KennyAssets/SpaceShooterRedux/Enemies/enemyRed1.png" id="1_4nbo3"]
 [ext_resource type="Script" uid="uid://deh8ii0qxjhy8" path="res://ennemie.gd" id="1_yb4ka"]
-[ext_resource type="PackedScene" uid="uid://gtxjy26ihri7" path="res://bullet.tscn" id="2_a5tde"]
+[ext_resource type="PackedScene" uid="uid://ojrhuxtm3f2n" path="res://bulletEnnemie.tscn" id="2_a5tde"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yb4ka"]
 size = Vector2(97, 93)
 
-[node name="ennemie" type="CharacterBody2D" groups=["Ennemy"]]
+[node name="ennemie1" type="CharacterBody2D" groups=["Ennemy"]]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_yb4ka")
@@ -19,3 +19,8 @@ shape = SubResource("RectangleShape2D_yb4ka")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_4nbo3")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

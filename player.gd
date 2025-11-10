@@ -8,7 +8,6 @@ var coolDown = 0;
 @export var moveThreshold = 20
 var mainScene : Node2D
 @export var speed:float=300;
-const Bullet = preload("res://bullet.gd")
 
 func _ready() -> void:
 	mainScene = $".."
@@ -46,12 +45,6 @@ func shoot()-> void:
 	var bullet : Bullet = bullet_scene.instantiate()
 	mainScene.add_child(bullet)
 	bullet.isFromPlayer=true
-	bullet.global_position = Vector2(global_position.x,global_position.y-50)
+	bullet.global_position = Vector2(global_position.x,global_position.y-70)
 	return
 	
-func _on_area_enter(body:Node2D)->void:
-	if(body is Ennemie):
-		body.queue_free()
-	if(body is Player):
-		body.takeDamage()
-	print("touche new")

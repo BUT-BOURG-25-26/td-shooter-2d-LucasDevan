@@ -1,18 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://b723eanis0f5i"]
+[gd_scene load_steps=11 format=3 uid="uid://b723eanis0f5i"]
 
 [ext_resource type="PackedScene" uid="uid://cnx2oop04otpy" path="res://player.tscn" id="1_0f027"]
 [ext_resource type="Script" uid="uid://d3q28h456cn4b" path="res://main_scene.gd" id="1_d5x1h"]
-[ext_resource type="PackedScene" uid="uid://bv3luedqrcnuq" path="res://ennemie.tscn" id="2_2c62f"]
 [ext_resource type="PackedScene" uid="uid://bt5rsdpfhsier" path="res://killingArea.tscn" id="3_gyfs4"]
+[ext_resource type="PackedScene" uid="uid://bn5lbiaggg430" path="res://ennemiespawner.tscn" id="5_8mm7a"]
+[ext_resource type="PackedScene" uid="uid://d3temw4cltbjk" path="res://gameManager.tscn" id="5_hq1ik"]
+[ext_resource type="Script" uid="uid://c3kw6uaoh0j6e" path="res://label.gd" id="5_nfk4m"]
+[ext_resource type="Script" uid="uid://o6de0rcsdbbn" path="res://item_list.gd" id="6_7ycvg"]
+[ext_resource type="Script" uid="uid://21kivil5x25t" path="res://game_manager.gd" id="6_nfk4m"]
+[ext_resource type="Texture2D" uid="uid://cofylary07q2b" path="res://KennyAssets/SpaceShooterRedux/playerShip1_blue.png" id="7_wr18j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d5x1h"]
 
 [node name="MainScene" type="Node2D"]
+position = Vector2(0, 1)
 script = ExtResource("1_d5x1h")
 
-[node name="ennemie2" parent="." instance=ExtResource("2_2c62f")]
-position = Vector2(426, -348)
+[node name="EnnemieSpawner" parent="." instance=ExtResource("5_8mm7a")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(374, 640)
+position = Vector2(0, -1)
 limit_left = 0
 limit_top = 0
 limit_right = 720
@@ -20,25 +27,77 @@ limit_bottom = -1000
 limit_smoothed = true
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("1_0f027")]
-position = Vector2(382, 904)
-
-[node name="ennemie" parent="." instance=ExtResource("2_2c62f")]
-position = Vector2(82, -86)
+position = Vector2(335, 912)
 
 [node name="TopKillingArea" parent="." instance=ExtResource("3_gyfs4")]
 position = Vector2(0, -403)
 
-[node name="ennemie3" parent="." instance=ExtResource("2_2c62f")]
-position = Vector2(416, 101)
-
-[node name="ennemie4" parent="." instance=ExtResource("2_2c62f")]
-position = Vector2(623, -274)
-
-[node name="ennemie5" parent="." instance=ExtResource("2_2c62f")]
-position = Vector2(462, -30)
-
-[node name="ennemie6" parent="." instance=ExtResource("2_2c62f")]
-position = Vector2(247, -243)
-
 [node name="BottomKillingArea2" parent="." instance=ExtResource("3_gyfs4")]
-position = Vector2(-12, 1035)
+position = Vector2(-12, 1039)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_left = 0.76
+anchor_right = 1.0
+anchor_bottom = 0.062
+offset_left = -0.200012
+offset_bottom = 0.0999985
+text = "1000"
+label_settings = SubResource("LabelSettings_d5x1h")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_nfk4m")
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.425
+anchor_bottom = 0.081
+offset_top = 1.0
+offset_bottom = 0.0500031
+script = ExtResource("6_7ycvg")
+metadata/_edit_use_anchors_ = true
+
+[node name="life1" type="TextureRect" parent="CanvasLayer/ItemList" groups=["lifePointTexture"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.0131579
+anchor_right = 0.338
+anchor_bottom = 0.987
+offset_right = 197.628
+offset_bottom = -0.012001
+texture = ExtResource("7_wr18j")
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="life2" type="TextureRect" parent="CanvasLayer/ItemList" groups=["lifePointTexture"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.327196
+anchor_top = -0.0131579
+anchor_right = 0.673196
+anchor_bottom = 0.973842
+offset_left = -0.122002
+offset_right = 0.0579987
+offset_bottom = -0.012001
+texture = ExtResource("7_wr18j")
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="life3" type="TextureRect" parent="CanvasLayer/ItemList" groups=["lifePointTexture"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.66
+anchor_top = -0.0131579
+anchor_right = 0.999941
+anchor_bottom = 0.987158
+offset_left = 0.0399933
+offset_right = 0.0180054
+offset_bottom = -0.0240021
+texture = ExtResource("7_wr18j")
+stretch_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="GameManager" parent="." instance=ExtResource("5_hq1ik")]
+script = ExtResource("6_nfk4m")
