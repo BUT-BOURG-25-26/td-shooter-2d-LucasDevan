@@ -1,20 +1,44 @@
-[gd_scene load_steps=2 format=3 uid="uid://b723eanis0f5i"]
+[gd_scene load_steps=5 format=3 uid="uid://b723eanis0f5i"]
 
 [ext_resource type="PackedScene" uid="uid://cnx2oop04otpy" path="res://player.tscn" id="1_0f027"]
+[ext_resource type="Script" uid="uid://d3q28h456cn4b" path="res://main_scene.gd" id="1_d5x1h"]
+[ext_resource type="PackedScene" uid="uid://bv3luedqrcnuq" path="res://ennemie.tscn" id="2_2c62f"]
+[ext_resource type="PackedScene" uid="uid://bt5rsdpfhsier" path="res://killingArea.tscn" id="3_gyfs4"]
 
 [node name="MainScene" type="Node2D"]
-position = Vector2(-401, 14)
+script = ExtResource("1_d5x1h")
+
+[node name="ennemie2" parent="." instance=ExtResource("2_2c62f")]
+position = Vector2(426, -348)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(400, 600)
-limit_left = -350
+position = Vector2(374, 640)
+limit_left = 0
 limit_top = 0
-limit_right = 350
-limit_bottom = -1200
+limit_right = 720
+limit_bottom = -1000
 limit_smoothed = true
 
-[node name="player" parent="." instance=ExtResource("1_0f027")]
-position = Vector2(398, 917)
-maxHealth = null
-moveThreshold = null
-speed = null
+[node name="player" parent="." groups=["player"] instance=ExtResource("1_0f027")]
+position = Vector2(382, 904)
+
+[node name="ennemie" parent="." instance=ExtResource("2_2c62f")]
+position = Vector2(82, -86)
+
+[node name="TopKillingArea" parent="." instance=ExtResource("3_gyfs4")]
+position = Vector2(0, -403)
+
+[node name="ennemie3" parent="." instance=ExtResource("2_2c62f")]
+position = Vector2(416, 101)
+
+[node name="ennemie4" parent="." instance=ExtResource("2_2c62f")]
+position = Vector2(623, -274)
+
+[node name="ennemie5" parent="." instance=ExtResource("2_2c62f")]
+position = Vector2(462, -30)
+
+[node name="ennemie6" parent="." instance=ExtResource("2_2c62f")]
+position = Vector2(247, -243)
+
+[node name="BottomKillingArea2" parent="." instance=ExtResource("3_gyfs4")]
+position = Vector2(-12, 1035)

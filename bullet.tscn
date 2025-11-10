@@ -8,8 +8,8 @@ radius = 7.0
 height = 46.0
 
 [node name="Bullet" type="Area2D"]
-collision_layer = 3
-collision_mask = 4
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("1_v7oki")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -18,4 +18,6 @@ scale = Vector2(1.07692, 1.20998)
 texture = ExtResource("2_v8qja")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visibility_layer = 7
 shape = SubResource("CapsuleShape2D_t4vbm")
+one_way_collision_margin = 0.0

@@ -1,11 +1,12 @@
+class_name Player
 extends CharacterBody2D
 var currentHealth = 3;
 @export var maxHealth	= 3;
 var coolDown = 0;
-var maxCoolDown = 10;
+@export var maxCoolDown = 30;
 @export var bullet_scene: PackedScene
 @export var moveThreshold = 20
-var mainScene : Node3D
+var mainScene : Node2D
 @export var speed:float=300;
 const Bullet = preload("res://bullet.gd")
 
@@ -32,18 +33,25 @@ func getShoot()->bool:
 
 func _process(delta: float) -> void:
 	if(coolDown<=0):
-		if(getShoot()):
-			print("has shot!")
+			shoot()
 			coolDown = maxCoolDown
 	else:
 		coolDown -= 1
 
 func _physics_process(delta: float) -> void:
-	print("processed ! ")
 	velocity.x = getMovementInputs() * speed
 	move_and_slide()
 	
 func shoot()-> void:
 	var bullet : Bullet = bullet_scene.instantiate()
 	mainScene.add_child(bullet)
+	bullet.isFromPlayer=true
+	bullet.global_position = Vector2(global_position.x,global_position.y-50)
 	return
+	
+func _on_area_enter(body:Node2D)->void:
+	if(body is Ennemie):
+		body.queue_free()
+	if(body is Player):
+		body.takeDamage()
+	print("touche new")

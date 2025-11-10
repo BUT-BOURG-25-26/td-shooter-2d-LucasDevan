@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn5lbiaggg430"]
+
+[ext_resource type="Script" uid="uid://bxwwk7ynu6wvg" path="res://ennemiespawner.gd" id="1_duvlv"]
+[ext_resource type="PackedScene" uid="uid://bv3luedqrcnuq" path="res://ennemie.tscn" id="2_3mlgp"]
+
+[node name="Ennemiespawner" type="Node2D"]
+script = ExtResource("1_duvlv")
+ennemyScene = ExtResource("2_3mlgp")

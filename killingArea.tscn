@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt5rsdpfhsier"]
+
+[ext_resource type="Script" uid="uid://yvo5wbko20nr" path="res://killing_area.gd" id="1_uep4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8473"]
+size = Vector2(1783, 19)
+
+[node name="KillingArea" type="Area2D"]
+collision_mask = 7
+script = ExtResource("1_uep4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(362.5, -0.5)
+shape = SubResource("RectangleShape2D_d8473")
