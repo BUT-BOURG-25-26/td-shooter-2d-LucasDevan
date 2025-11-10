@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b723eanis0f5i"]
+[gd_scene load_steps=13 format=3 uid="uid://b723eanis0f5i"]
 
 [ext_resource type="PackedScene" uid="uid://cnx2oop04otpy" path="res://player.tscn" id="1_0f027"]
 [ext_resource type="Script" uid="uid://d3q28h456cn4b" path="res://main_scene.gd" id="1_d5x1h"]
@@ -9,12 +9,27 @@
 [ext_resource type="Script" uid="uid://o6de0rcsdbbn" path="res://item_list.gd" id="6_7ycvg"]
 [ext_resource type="Script" uid="uid://21kivil5x25t" path="res://game_manager.gd" id="6_nfk4m"]
 [ext_resource type="Texture2D" uid="uid://cofylary07q2b" path="res://KennyAssets/SpaceShooterRedux/playerShip1_blue.png" id="7_wr18j"]
+[ext_resource type="Texture2D" uid="uid://boigkdlcio0kv" path="res://KennyAssets/SpaceShooterRedux/Backgrounds/darkPurple.png" id="10_wr18j"]
+[ext_resource type="PackedScene" uid="uid://3hkb5w322may" path="res://menue/menue.tscn" id="11_qwutr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_d5x1h"]
 
 [node name="MainScene" type="Node2D"]
 position = Vector2(0, 1)
 script = ExtResource("1_d5x1h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+light_mask = 0
+visibility_layer = 2
+offset_left = -74.0
+offset_top = -54.0
+offset_right = 801.0
+offset_bottom = 1087.0
+texture = ExtResource("10_wr18j")
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("1_0f027")]
+light_mask = 2
+position = Vector2(335, 912)
 
 [node name="EnnemieSpawner" parent="." instance=ExtResource("5_8mm7a")]
 
@@ -25,9 +40,6 @@ limit_top = 0
 limit_right = 720
 limit_bottom = -1000
 limit_smoothed = true
-
-[node name="player" parent="." groups=["player"] instance=ExtResource("1_0f027")]
-position = Vector2(335, 912)
 
 [node name="TopKillingArea" parent="." instance=ExtResource("3_gyfs4")]
 position = Vector2(0, -403)
@@ -101,3 +113,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="GameManager" parent="." instance=ExtResource("5_hq1ik")]
 script = ExtResource("6_nfk4m")
+
+[node name="Menue" parent="." groups=["Menu"] instance=ExtResource("11_qwutr")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 720.0
+offset_bottom = 950.0
+grow_horizontal = 1
+grow_vertical = 1

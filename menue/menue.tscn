@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://3hkb5w322may"]
+
+[ext_resource type="Script" uid="uid://c3jth5pc1k4k0" path="res://menue/menue.gd" id="1_fk87n"]
+
+[node name="Menue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fk87n")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.144
+anchor_top = 0.032
+anchor_right = 0.819
+anchor_bottom = 0.227
+offset_left = 0.319992
+offset_top = -0.400002
+offset_right = 0.319946
+offset_bottom = 0.349991
+theme_override_font_sizes/font_size = 80
+text = "Start Game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.096
+anchor_top = 0.397
+anchor_right = 0.389
+anchor_bottom = 0.524
+offset_left = -0.120003
+offset_top = -0.150024
+offset_right = -0.0800171
+offset_bottom = 0.199951
+theme_override_font_sizes/font_size = 40
+text = "Start"
+
+[node name="Stop" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.6
+anchor_top = 0.397
+anchor_right = 0.893
+anchor_bottom = 0.5
+offset_left = -3.05176e-05
+offset_top = -0.150024
+offset_right = 0.039978
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 40
+text = "close"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Stop" to="." method="_on_stop_pressed"]
