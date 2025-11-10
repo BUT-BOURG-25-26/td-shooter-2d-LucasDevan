@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b723eanis0f5i"]
+
+[ext_resource type="PackedScene" uid="uid://cnx2oop04otpy" path="res://player.tscn" id="1_0f027"]
+
+[node name="MainScene" type="Node2D"]
+position = Vector2(-401, 14)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(400, 600)
+limit_left = -350
+limit_top = 0
+limit_right = 350
+limit_bottom = -1200
+limit_smoothed = true
+
+[node name="player" parent="." instance=ExtResource("1_0f027")]
+position = Vector2(398, 917)
+maxHealth = null
+moveThreshold = null
+speed = null
